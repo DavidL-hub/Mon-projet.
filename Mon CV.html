@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de CV</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+        form div {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="file"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>FORMULAIRE DE CV</h1>
+    <form>
+        <h2>1.INFORMATIONS PERSONNELLES</h2>
+        <div>
+            <label for="nom">Nom :</label>
+            <input type="text" id="nom" name="nom" required>
+        </div>
+        <div>
+            <label for="postnom">Postnom :</label>
+            <input type="text" id="postnom" name="postnom" required>
+        </div>
+		<div>
+            <label for="prénom">Prénom :</label>
+            <input type="text" id="prénom" name="prénom" required>
+        </div>
+        <div>
+            <label for="date_naissance">Date de naissance :</label>
+            <input type="date" id="date_naissance" name="date_naissance" required>
+        </div>
+        <div>
+            <label for="lieu_naissance">Lieu de naissance :</label>
+            <input type="text" id="lieu_naissance" name="lieu_naissance" required>
+        </div>
+        <div>
+            <label for="telephone">Téléphone :</label>
+            <input type="tel" id="telephone" name="telephone" required>
+        </div>
+        <div>
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="photo">Photo :</label>
+            <input type="file" id="photo" name="photo" accept="image/*" required>
+        </div>
+
+        <h2>2.ETUDES FAITES</h2>
+        <div>
+            <label for="etudes">Études :</label>
+            <textarea id="etudes" name="etudes" rows="4" required></textarea>
+        </div>
+
+        <h2>3.EXPERIENCES PROFESSIONNELLES</h2>
+        <div>
+            <label for="experiences">Expériences professionnelles :</label>
+            <textarea id="experiences" name="experiences" rows="4" required></textarea>
+        </div>
+
+        <h2>4.COMPETENCES</h2>
+        <div>
+            <label for="competences">Compétences :</label>
+            <textarea id="competences" name="competences" rows="4" required></textarea>
+        </div>
+
+        <h2>5.LANGUES PARLEES</h2>
+        <div>
+            <label for="langues">Langues parlées :</label>
+            <textarea id="langues" name="langues" rows="2" required></textarea>
+        </div>
+
+        <h2>6.CENTRES D'INTERET</h2>
+        <div>
+            <label for="interets">Centres d’intérêt :</label>
+            <textarea id="interets" name="interets" rows="2" required></textarea>
+        </div>
+
+        <h2>7.VIDEO DE PRESENTATION</h2>
+        <div>
+            <label for="video">Vidéo de présentation :</label>
+            <input type="file" id="video" name="video" accept="video/*" required>
+        </div>
+
+        <button type="submit">Soumettre</button>
+    </form>
+</body>
+</html>

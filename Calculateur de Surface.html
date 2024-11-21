@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculateur de Surfaces</title>
+    <style>
+        body {
+            font-family:'Georgia',sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+        }
+        select, input, button {
+            font-size: 1em;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>CALCULATEUR DE SURFACES</h1>
+
+    <label for="shape">Choix de la forme :</label>
+    <select id="shape">
+        <option value="triangle">Triangle</option>
+        <option value="rectangle">Rectangle</option>
+        <option value="square">Carré</option>
+        <option value="circle">Cercle</option>
+        <option value="rhombus">Losange</option>
+        <option value="polygon">Polygone régulier</option>
+    </select>
+
+    <div id="inputs"></div>
+    <button onclick="calculateArea()">CALCULER</button>
+
+    <h2>La surface est : <span id="result"></span></h2>
+
+    <script>
+        const shapeSelect = document.getElementById('shape');
+        const inputsDiv = document.getElementById('inputs');
+        const resultSpan = document.getElementById('result');
+
+        shapeSelect.addEventListener('change', updateInputs);
+
+        function updateInputs() {
+            const shape = shapeSelect.value;
+            let inputsHTML = '';
+
+            switch(shape) {
+                case 'triangle':
+                    inputsHTML = '<label for="base">Base :</label><input type="number" id="base"><br>' +
+                                 '<label for="height">Hauteur :</label><input type="number" id="height"><br>';
+                    break;
+                case 'rectangle':
+                    inputsHTML = '<label for="length">Longueur :</label><input type="number" id="length"><br>' +
+                                 '<label for="width">Largeur :</label><input type="number" id="width"><br>';
+                    break;
+                case 'square':
+                    inputsHTML = '<label for="side">Côté :</label><input type="number" id="side"><br>';
+                    break;
+                case 'circle':
+                    inputsHTML = '<label for="radius">Rayon :</label><input type="number" id="radius"><br>';
+                    break;
+                case 'rhombus':
+                    inputsHTML = '<label for="diagonal1">Diagonale 1 :</label><input type="number" id="diagonal1"><br>' +
+                                 '<label for="diagonal2">Diagonale 2 :</label><input type="number" id="diagonal2"><br>';
+                    break;
+                case 'polygon':
+                    inputsHTML = '<label for="sides">Nombre de côtés :</label><input type="number" id="sides"><br>' +
+                                 '<label for="sideLength">Longueur du côté :</label><input type="number" id="sideLength"><br>';
+                    break;
+            }
+
+            inputsDiv.innerHTML = inputsHTML;
+        }
+
+        function calculateArea() {
+            const shape = shapeSelect.value;
+            let area = 0;
+
+            switch(shape) {
+                case 'triangle':
+                    const base = parseFloat(document.getElementById('base').value);
+                    const height = parseFloat(document.getElementById('height').value);
+                    area = (base * height) / 2;
+                    break;
+                case 'rectangle':
+                    const length = parseFloat(document.getElementById('length').value);
+                    const width = parseFloat(document.getElementById('width').value);
+                    area = length * width;
+                    break;
+                case 'square':
+                    const side = parseFloat(document.getElementById('side').value);
+                    area = side * side;
+                    break;
+                case 'circle':
+                    const radius = parseFloat(document.getElementById('radius').value);
+                    area = Math.PI * radius * radius;
+                    break;
+                case 'rhombus':
+                    const diagonal1 = parseFloat(document.getElementById('diagonal1').value);
+                    const diagonal2 = parseFloat(document.getElementById('diagonal2').value);
+                    area = (diagonal1 * diagonal2) / 2;
+                    break;
+                case 'polygon':
+                    const sides = parseFloat(document.getElementById('sides').value);
+                    const sideLength = parseFloat(document.getElementById('sideLength').value);
+                    area = (sides * sideLength * sideLength * Math.cos(Math.PI / sides)) / (4 * Math.sin(Math.PI / sides));
+                    break;
+            }
+
+            resultSpan.textContent = area.toFixed(2);
+        }
+
+        updateInputs(); // Initialize inputs for the default selected shape
+    </script>
+</body>
+</html>
